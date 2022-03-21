@@ -10,10 +10,12 @@ background-image: url('https://res.cloudinary.com/djjgtili7/image/upload/v164771
 background-repeat: no-repeat;
 background-size: 1440px 160px;
 background-color: hsl(180, 29%, 50%);
-
-@media screen and (max-width: 415px){
-  background-size: 400px;
-  width: 415px;
+margin-bottom: 30px;
+@media screen and (max-width: 394px){
+  width: 393px;
+  background-size: 393px 60px;
+  height: 60px;
+  
 }
 `
 

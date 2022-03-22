@@ -1,5 +1,8 @@
 import React, { Component } from 'react'
 import styled from 'styled-components'
+import axios from 'axios';
+import Global from './Global';
+
 const CardJob= styled.div`
 
 width: 1200px;
@@ -34,15 +37,43 @@ justify-content: space-around;
 font-weight: 700;
 `
 export default class Card extends Component {
+
+  constructor(){
+    super();
+    this.state= {
+      jobs: []
+      , status: false
+    }
+  }
+  
+  getJobs=()=>{
+    var url= Global.urljobs;
+    var request = "/jobs"
+    axios
+    .get(url + request)
+    .then((resp)=>{
+      this.setState({
+        jobs: resp.data,
+        status: true
+      });
+    })
+    .catch((err)=> console.error(err));
+  };
+
+  componentDidMount(){
+    this.getJobs();
+  }
   render() {
+
     return (
+
       <CardJob>
         <ProfileImg>
         <div>
-          <Iprof>
-          <img src='https://res.cloudinary.com/djjgtili7/image/upload/v1647716939/job-listings/photosnap_auagw8.svg' alt=''/>
-          </Iprof>
-          <div></div>
+          <Iprof />
+          <div>
+            <span className='cname'></span>
+          </div>
         </div>
         <Tags>
           <p>1 month</p>
@@ -50,10 +81,10 @@ export default class Card extends Component {
           <p>Free Weekends</p>
         </Tags>
         </ProfileImg>
-        
-        <div>Web Developemt</div>
-        
+       
+        <div>Web Developemt</div>        
       </CardJob>
+      
     )
   }
 }

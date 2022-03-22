@@ -70,9 +70,9 @@ export default class Card extends Component {
       <CardJob>
         <ProfileImg>
         <div>
-          <Iprof />
+          <Iprof src={Global.urljobs} />
           <div>
-            <span className='cname'></span>
+            <span className='cname'>{this.getJobs.company}</span>
           </div>
         </div>
         <Tags>
